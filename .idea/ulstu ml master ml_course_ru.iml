@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/ml_venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.10 (ulstu ml master ml_course_ru)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Poetry (ml_course_ru)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
