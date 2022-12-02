@@ -38,8 +38,10 @@ for num, i in enumerate(degrees):
 
     X_test = diabetes_x[-20:]
 
+    score_etalon = r2_score(y[:20], pipeline.predict(x[:20]))
     score = r2_score(diabetes_y[-20:], pipeline.predict(X_test))
     df_scores.append({'degrees': i, 'score': score})
+    print(f"degrees: {i} score_etalon: {score_etalon} score: {score}")
 
     # plt.plot(X_test[:, 0], pipeline.predict(X_test), label="Model")
     # plt.plot(X_test[:, 0], diabetes_y[-20:], label="True function")
