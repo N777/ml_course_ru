@@ -38,17 +38,17 @@ print("Mean squared error: %.2f" % mean_squared_error(diabetes_y_test, diabetes_
 # The coefficient of determination: 1 is perfect prediction
 print("Coefficient of determination: %.2f" % r2_score(diabetes_y_test, diabetes_y_pred))
 
-# XY_test = pd.DataFrame({'x': diabetes_X_test[:, 0], 'y': diabetes_y_test})
-# XY_pred = pd.DataFrame({'x': diabetes_X_test[:, 0], 'y': diabetes_y_pred})
-#
-# XY_test = XY_test.sort_values(by='x')
-# XY_pred = XY_pred.sort_values(by='x')
-#
-# # чё за бред оно рисует
-# plt.plot(XY_test['x'], XY_test['y'], color="black")
-# plt.plot(XY_pred['x'], XY_pred['y'], color="blue", linewidth=3)
+XY_test = pd.DataFrame({'x': diabetes_X_test[:, 0], 'y': diabetes_y_test})
+XY_pred = pd.DataFrame({'x': diabetes_X_test[:, 0], 'y': diabetes_y_pred})
+
+XY_test = XY_test.sort_values(by='x')
+XY_pred = XY_pred.sort_values(by='x')
+
+# чё за бред оно рисует
+plt.plot(XY_test['x'], XY_test['y'], color="black")
+plt.plot(XY_pred['x'], XY_pred['y'], color="blue", linewidth=3)
 # plt.scatter(XY_test['x'], XY_test['y'], edgecolor='b', s=20, label="Samples")
-#
-#
-#
-# plt.show()
+
+
+
+plt.show()
