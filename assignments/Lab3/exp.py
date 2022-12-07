@@ -15,12 +15,12 @@ diabetes_x, diabetes_y = np.array(data.iloc[:, 0:7]), np.array(data.iloc[:, 8])
 np.random.seed(0)
 
 n_samples = 1010
-degrees = [*range(1, 8)]
+degrees = [*range(1, 5)]
 
 x = diabetes_x[:-20]
 y = diabetes_y[:-20] + np.random.randn(n_samples) * 0.1
 df_scores = []
-plt.figure(figsize=(14, 5))
+# plt.figure(figsize=(14, 5))
 for num, i in enumerate(degrees):
     # ax = plt.subplot(1, len(degrees), num + 1)
     # plt.setp(ax, xticks=(), yticks=())
@@ -40,7 +40,7 @@ for num, i in enumerate(degrees):
 
     score_etalon = r2_score(y[:20], pipeline.predict(x[:20]))
     score = r2_score(diabetes_y[-20:], pipeline.predict(X_test))
-    df_scores.append({'degrees': i, 'score': score})
+    df_scores.append({'degrees': i, 'score': score, 'score_etalon': score_etalon})
     print(f"degrees: {i} score_etalon: {score_etalon} score: {score}")
 
     # plt.plot(X_test[:, 0], pipeline.predict(X_test), label="Model")
@@ -54,6 +54,10 @@ for num, i in enumerate(degrees):
     # plt.legend(loc="best")
     # plt.title("Degree {}\nMSE = {:.2e}(+/- {:.2e})".format(i, -scores.mean(), scores.std()))
 df_scores = pd.DataFrame(df_scores)
-df_scores.plot(x='degrees', y='score')
+plt.ylim(-0.1, df_scores['score'].max() + 0.2)
+plt.plot(df_scores['degrees'], df_scores['score_etalon'], "r")
+plt.plot(df_scores['degrees'], df_scores['score'], "b")
+# df_scores.plot(x='score_etalon', y='score')
+# df_scores.plot(x='degrees', y='score')
 # plt.ylim(-1, df_scores['score'].max() + 0.2)
 plt.show()
