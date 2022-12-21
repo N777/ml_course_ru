@@ -1,26 +1,23 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn import datasets, linear_model
+from sklearn import linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 
-with open("Concrete_Data.csv") as file:
+with open("slump_test.data") as file:
     data = pd.read_csv(file)
 
-
 # Load the diabetes dataset
-diabetes_X, diabetes_y = np.array(data.iloc[:, 0:7]), np.array(data.iloc[:, 8])
+diabetes_x, diabetes_y = np.array(data.iloc[:, 1:7]), np.array(data.iloc[:, 9])
 
-# Use only one feature
-# diabetes_X = diabetes_X[:, np.newaxis, 0]
-
+test_count = 5
 # Split the data into training/testing sets
-diabetes_X_train = diabetes_X[:-20]
-diabetes_X_test = diabetes_X[-20:]
+diabetes_X_train = diabetes_x[:-test_count]
+diabetes_X_test = diabetes_x[-test_count:]
 
 # Split the targets into training/testing sets
-diabetes_y_train = diabetes_y[:-20]
-diabetes_y_test = diabetes_y[-20:]
+diabetes_y_train = diabetes_y[:-test_count]
+diabetes_y_test = diabetes_y[-test_count:]
 
 results = []
 
